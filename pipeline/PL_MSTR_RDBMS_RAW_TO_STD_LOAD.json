@@ -158,7 +158,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "Execute Pipeline1",
+				"name": "Execute Failed Status",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
@@ -173,6 +173,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Pl_CHILD_Email_Notification_Error",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			}
