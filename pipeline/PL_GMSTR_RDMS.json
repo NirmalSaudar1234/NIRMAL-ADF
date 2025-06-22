@@ -1,20 +1,54 @@
 {
-	"name": "PL_MSTR_RDBMS_RAW_TO_STD_LOAD",
+	"name": "PL_GMSTR_RDMS",
 	"properties": {
+		"description": "SQL_SOURCE",
 		"activities": [
+			{
+				"name": "GET_PIPELINE_ID",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
+			{
+				"name": "SetPipelineLookupQuery",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GET_PIPELINE_ID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
 			{
 				"name": "START_BATCH_EXECUTION",
 				"type": "ExecutePipeline",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "SetPipelineLookupQuery",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureInput": false
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"pipeline": {
-						"referenceName": "START_BATCH_EXECUTION_STDLOAD",
-						"type": "PipelineReference"
-					},
 					"waitOnCompletion": true
 				}
 			},
@@ -39,7 +73,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "START EXECUTION",
+				"name": "Start Execution",
 				"type": "Lookup",
 				"dependsOn": [
 					{
@@ -63,7 +97,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "START EXECUTION",
+						"activity": "Start Execution",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -73,38 +107,14 @@
 				"typeProperties": {
 					"ifTrueActivities": [
 						{
-							"name": "LKP_Get_ALL_PIDs",
-							"type": "Lookup",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": []
-						},
-						{
-							"name": "SourceToSTD",
+							"name": "PL_MSTR_RDBMS_RAW_TOSTD_LOAD",
 							"type": "ExecutePipeline",
-							"dependsOn": [
-								{
-									"activity": "LKP_Get_ALL_PIDs",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"secureInput": false
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"pipeline": {
-									"referenceName": "PL_WRKR_RDBMS_RAW_TO_STD_LOAD",
-									"type": "PipelineReference"
-								},
 								"waitOnCompletion": true
 							}
 						}
