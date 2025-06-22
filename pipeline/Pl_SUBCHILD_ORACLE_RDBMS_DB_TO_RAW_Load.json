@@ -132,7 +132,7 @@
 				"typeProperties": {
 					"ifFalseActivities": [
 						{
-							"name": "Fail1",
+							"name": "RawPipelineFailedCSV",
 							"type": "Fail",
 							"dependsOn": [
 								{
