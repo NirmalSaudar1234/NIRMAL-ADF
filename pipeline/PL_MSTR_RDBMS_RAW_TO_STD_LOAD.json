@@ -241,7 +241,7 @@
 				}
 			},
 			{
-				"name": "Fail1",
+				"name": "RDBMSMasterPipelineFailed",
 				"type": "Fail",
 				"dependsOn": [
 					{
