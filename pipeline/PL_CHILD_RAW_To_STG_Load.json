@@ -89,7 +89,7 @@
 				}
 			},
 			{
-				"name": "Fail1",
+				"name": "StagePipelineFailed",
 				"type": "Fail",
 				"dependsOn": [
 					{
