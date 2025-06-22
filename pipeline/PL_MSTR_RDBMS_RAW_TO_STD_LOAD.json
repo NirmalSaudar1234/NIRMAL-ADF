@@ -112,7 +112,7 @@
 				}
 			},
 			{
-				"name": "Stored procedure1",
+				"name": "Update Success Status ",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -132,7 +132,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "Lookup1",
+				"name": "Success_Email_Metadata",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -145,7 +145,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "Lookup2",
+				"name": "Failure_Email_Metadata",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -177,6 +177,18 @@
 						"referenceName": "Pl_CHILD_Email_Notification_Error",
 						"type": "PipelineReference"
 					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
 					"waitOnCompletion": true
 				}
 			}
