@@ -49,14 +49,25 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline3",
+							"name": "StageToStandard",
 							"type": "ExecutePipeline",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "RawToStage",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"secureInput": false
 							},
 							"userProperties": [],
 							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_CHLD_STG_To_STD_Load",
+									"type": "PipelineReference"
+								},
 								"waitOnCompletion": true
 							}
 						}
