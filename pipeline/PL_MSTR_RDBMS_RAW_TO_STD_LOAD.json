@@ -216,6 +216,42 @@
 					},
 					"waitOnCompletion": true
 				}
+			},
+			{
+				"name": "Failure Email Notification",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Failure_Email_Metadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Pl_CHLD_Email_Notification",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Fail1",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "Failure Email Notification",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": []
 			}
 		],
 		"annotations": []
