@@ -142,7 +142,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "Execute Pipeline1",
+				"name": "Execute Failed Status",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
@@ -161,11 +161,11 @@
 				}
 			},
 			{
-				"name": "Fail1",
+				"name": "Grand_Master_Pipeline_Failed",
 				"type": "Fail",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline1",
+						"activity": "Execute Failed Status",
 						"dependencyConditions": [
 							"Succeeded"
 						]
