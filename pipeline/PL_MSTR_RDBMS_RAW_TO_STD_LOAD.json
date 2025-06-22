@@ -134,7 +134,14 @@
 			{
 				"name": "Success_Email_Metadata",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Update Success Status ",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -147,7 +154,14 @@
 			{
 				"name": "Failure_Email_Metadata",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Execute Failed Status",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -181,14 +195,25 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline1",
+				"name": "Success Email Notification",
 				"type": "ExecutePipeline",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Success_Email_Metadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureInput": false
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Pl_CHLD_Email_Notification",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			}
