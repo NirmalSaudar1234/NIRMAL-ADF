@@ -169,6 +169,19 @@
 								},
 								"waitOnCompletion": true
 							}
+						},
+						{
+							"name": "RawPipelineFailedParquet",
+							"type": "Fail",
+							"dependsOn": [
+								{
+									"activity": "ExecuteFailedStatusParquet",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": []
 						}
 					]
 				}
