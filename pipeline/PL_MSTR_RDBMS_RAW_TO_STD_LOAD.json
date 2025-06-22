@@ -1,0 +1,24 @@
+{
+	"name": "PL_MSTR_RDBMS_RAW_TO_STD_LOAD",
+	"properties": {
+		"activities": [
+			{
+				"name": "START_BATCH_EXECUTION",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "START_BATCH_EXECUTION_STDLOAD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
