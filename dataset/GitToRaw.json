@@ -10,12 +10,13 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "anshlambaoldgit/Adventure-Works-Data-Engineering-Project/blob/main/Data/AdventureWorks_Products.csv"
+				"relativeUrl": "NirmalSaudar1234/NIRMAL-ADF/blob/main/AdventureWorks_Products.csv"
 			},
 			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"firstRowAsHeader": false,
+			"quoteChar": null
 		},
 		"schema": []
 	}
