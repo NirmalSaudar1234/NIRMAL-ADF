@@ -1,0 +1,22 @@
+{
+	"name": "GitToRaw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpLinkedServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "anshlambaoldgit/Adventure-Works-Data-Engineering-Project/blob/main/Data/AdventureWorks_Products.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
